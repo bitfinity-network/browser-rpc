@@ -1,25 +1,25 @@
 export type CallID = string | number;
 
 export type ErrorRes = {
-  code: number,
-  message: string,
-  data?: any,
+  code: number;
+  message: string;
+  data?: any;
 };
 
 export interface RpcBaseData {
   id: CallID;
-  jsonrpc: '2.0',
-};
+  jsonrpc: "2.0";
+}
 
 export interface RpcResData extends RpcBaseData {
   result?: any;
   error?: ErrorRes;
-};
+}
 
 export interface RpcReqData extends RpcBaseData {
   method: string;
   params: any[];
-};
+}
 
 export type ReqMessage = {
   target: string;
@@ -49,8 +49,8 @@ export type ResolverObject = {
 export type CallBackHandler = (err: null | ErrorRes, res?: null | any) => void;
 
 export type HandlerProps = {
-  callback: CallBackHandler,
-  message: ReqMessage,
+  callback: CallBackHandler;
+  message: ReqMessage;
 };
 
 export type Handler = (props: HandlerProps, ...args: any[]) => any;
@@ -61,8 +61,8 @@ export type CallConfigObject = {
 };
 
 export type ValidationMessageObject = {
-  isValid: boolean,
-  type: 'req' | 'res' | null;
+  isValid: boolean;
+  type: "req" | "res" | null;
 };
 
 export interface RpcConfig {
@@ -72,4 +72,4 @@ export interface RpcConfig {
   handlers?: {
     [name: string]: Handler;
   };
-};
+}

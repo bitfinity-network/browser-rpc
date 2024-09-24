@@ -1,27 +1,29 @@
-import schema from './schema';
-import { ValidationMessageObject } from './types';
+import schema from "./schema";
+import { ValidationMessageObject } from "./types";
 
-export const validateMessageSchema = (message: any): ValidationMessageObject => {
+export const validateMessageSchema = (
+  message: any
+): ValidationMessageObject => {
   const result = schema.validate(message);
 
   if (result.error) return { isValid: false, type: null };
 
-  let type: ValidationMessageObject['type'] = null;
+  let type: ValidationMessageObject["type"] = null;
 
   if (
-    message.data.data.hasOwnProperty('method')
-    && message.data.data.hasOwnProperty('params')
+    message?.data?.data?.hasOwnProperty("method") &&
+    message?.data?.data?.hasOwnProperty("params")
   ) {
-    type = 'req';
+    type = "req";
   } else if (
-    message.data.data.hasOwnProperty('result')
-    || message.data.data.hasOwnProperty('error')
+    message?.data?.data?.hasOwnProperty("result") ||
+    message?.data?.data?.hasOwnProperty("error")
   ) {
-    type = 'res';
+    type = "res";
   }
 
   return {
     type,
-    isValid: (type === 'req' || type === 'res'),
+    isValid: type === "req" || type === "res",
   };
-}
+};

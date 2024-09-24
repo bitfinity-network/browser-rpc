@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from "joi";
 
 const schema = Joi.object({
   target: Joi.string().required(),
@@ -6,7 +6,7 @@ const schema = Joi.object({
     name: Joi.string().required(),
     data: Joi.object({
       id: Joi.alternatives().try(Joi.number(), Joi.string()).required(),
-      jsonrpc: Joi.string().valid('2.0').required(),
+      jsonrpc: Joi.string().valid("2.0").required(),
       result: Joi.any(),
       method: Joi.string(),
       params: Joi.array().items(Joi.any()),

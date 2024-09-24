@@ -8,4 +8,4 @@ export const JSON_RPC_ERROR_CODES = {
   SERVER_ERROR: -32000,
 };
 
-export const JSON_RPC_VERSION = '2.0';
+export const JSON_RPC_VERSION = "2.0";
