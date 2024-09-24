@@ -12,6 +12,7 @@
     "build:cjs": "tsc --module commonjs --target es2015 --outDir ./dist",
     "build:esm": "tsc --module es2015 --target es5 --outDir ./dist/esm -d false",
     "prepublishOnly": "npm run build",
+    "prepare": "npm run build",
     "clean": "rimraf ./dist",
     "lint": "eslint --ext .js,.ts ./src/**",
     "lint:fix": "npm run lint -- --fix",
