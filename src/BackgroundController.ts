@@ -135,6 +135,10 @@ export default class BackgroundController {
     }[]
   ): void {
     if (!targetPorts) {
+      if (!this.ports.has(`${port.sender?.tab?.id}:${port.sender?.frameId}`)) {
+        return;
+      }
+
       const resMessage = this.buildResMessage(
         port.name,
         this.name,
@@ -150,6 +154,10 @@ export default class BackgroundController {
       const _port = this.ports.get(targetPort.portId);
 
       if (_port) {
+        if (!this.ports.has(targetPort.portId)) {
+          return;
+        }
+
         const resMessage = this.buildResMessage(
           _port.name,
           this.name,
